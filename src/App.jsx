@@ -4,9 +4,11 @@ import "./App.css";
 
 function App() {
   const [weather, setWeather] = useState({});
-  const [degrees, setDegrees] = useState({});
-  const buttonDegrees = () => {
-    alert("falta agregar funcionalidad")
+  const [isCentigrade, setIsCentigrade] = useState(true);
+  const changeValue = () => {
+    // alert("falta agregar funcionalidad")
+    setIsCentigrade(!isCentigrade)
+    console.log('Cambie a', isCentigrade);
   }
 
   useEffect(() => {
@@ -29,8 +31,6 @@ function App() {
         )
         .then((res) => setWeather(res.data))
         .catch((err) => console.log("fallo"));
-
-        console.log(`Log de URL ${`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`}`);
     };
   
     navigator.geolocation.getCurrentPosition(success, Option);
@@ -47,7 +47,9 @@ function App() {
         <div className="img-weather">
       <img src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`} alt="" />
       <p>Temperatura</p>
-      <p>{weather.main?.temp}</p>
+      <p>
+        {isCentigrade ? Math.round(weather.main?.temp-273.15) + "°C" : Math.round((weather.main?.temp-273.15)*9/5+32) + "°F"} 
+      </p>
         </div>
         <div className="description-weather">
       <p>"{weather.weather?.[0].description}"</p>
@@ -57,7 +59,9 @@ function App() {
      </div>
         
       </div>
-        <button onClick={buttonDegrees}>Grados</button>
+        <button onClick={changeValue}>
+          {isCentigrade ? "Change to °F" : "Change to °C"}
+        </button>
     </div>
   );
 }
