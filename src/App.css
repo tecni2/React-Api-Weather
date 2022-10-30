@@ -33,15 +33,16 @@
 }
 
 .App {
-  padding: 3em;
+  padding: 10px 40px;
   border: solid 1px white;
   border-radius: 15px;
+  background-color: rgba(82, 146, 184, 0.815);
 }
 
 .card {
   display: flex;
   /* flex-direction: row; */
-  border: solid 1px darkcyan;
+  /* border: solid 1px darkcyan; */
   /* padding: 1em; */
 }
 
@@ -49,8 +50,16 @@
   color: #888;
 }
 
-img {
-  border: solid 1px firebrick;
-  width: 180px;
-
+.icon {
+  width: 30px;
 }
+
+.icon-wind {
+  width: 20px;
+}
+
+.img-img-weather {
+  /* border: solid 1px firebrick; */
+  width: 180px;
+}
+

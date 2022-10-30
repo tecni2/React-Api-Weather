@@ -42,10 +42,11 @@ function App() {
   return (
     <div className="App">
       <h1>Weather app</h1>
-      <h3>{weather.sys?.country} {weather.name}</h3>
+      <h3><img className="icon" src="../src/assets/location_on-.svg" alt="" />
+      {weather.sys?.country} {weather.name}</h3>
       <div className="card">
         <div className="img-weather">
-      <img src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`} alt="" />
+      <img className="img-img-weather" src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`} alt="" />
       <p>Temperatura</p>
       <p>
         {isCentigrade ? Math.round(weather.main?.temp-273.15) + "°C" : Math.round((weather.main?.temp-273.15)*9/5+32) + "°F"} 
@@ -53,9 +54,11 @@ function App() {
         </div>
         <div className="description-weather">
       <p>"{weather.weather?.[0].description}"</p>
-      <p>Wind Speed: {weather.wind?.speed}</p>
+      <p><img className="icon-wind" src="../src/assets/wind.svg" alt="" /> 
+        Wind Speed: {weather.wind?.speed}</p>
       <p>Clouds: {weather.clouds?.all}%</p>
-      <p>Pressure: {weather.main?.pressure} mb</p>
+      <p><img className="icon-wind" src="../src/assets/pressue.svg" alt="" />
+       Pressure: {weather.main?.pressure} mb</p>
      </div>
         
       </div>
