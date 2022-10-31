@@ -3,6 +3,9 @@ import axios from "axios";
 import "./App.css";
 import image from "../src/assets/pressue.svg";
 import image2 from "../src/assets/wind.svg";
+import icon from "../src/assets/location_on-.svg"
+
+import Loader from "./components/Loader";
 
 function App() {
   const [weather, setWeather] = useState({});
@@ -14,6 +17,8 @@ function App() {
   };
 
   useEffect(() => {
+    changeLoader();
+
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -41,49 +46,59 @@ function App() {
   // }, 1000)
   console.log("info de la API", weather);
 
-  return (
-    <div className="App">
-      <h1>Weather app</h1>
-      <h3>
-        <img className="icon" src="../src/assets/location_on-.svg" alt="" />
-        {weather.sys?.country} {weather.name}
-      </h3>
-      <div className="card">
-        <div className="img-weather">
-          <img
-            className="img-img-weather"
-            src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`}
-            alt=""
-          />
-          <p>Temperatura</p>
-          <p>
-            {isCentigrade
-              ? Math.round(weather.main?.temp - 273.15) + "°C"
-              : Math.round(((weather.main?.temp - 273.15) * 9) / 5 + 32) + "°F"}
-          </p>
-        </div>
-        <div className="description-weather">
-          <p>"{weather.weather?.[0].description}"</p>
-          <p>
-            <img className="icon-wind" src={image2} alt="" />
-            Wind Speed: {weather.wind?.speed}
-          </p>
-          <p>Clouds: {weather.clouds?.all}%</p>
-          <p>
+  const [load, setLoad] = useState(true);
+  const changeLoader = () => {
+    setTimeout(() => {
+      setLoad(false);
+    }, 5000);
+  };
+
+  if (load) {
+    return (
+        <Loader />
+    );
+  } else {
+    return (
+      <div className="App">
+        <h1>Weather app</h1>
+        <h3>
+          <img className="icon" src={icon} alt="" />
+          {weather.sys?.country} {weather.name}
+        </h3>
+        <div className="card">
+          <div className="img-weather">
             <img
-              className="icon-wind"
-              src={image}
+              className="img-img-weather"
+              src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`}
               alt=""
             />
-            Pressure: {weather.main?.pressure} mb
-          </p>
+            <p>Temperatura</p>
+            <p>
+              {isCentigrade
+                ? Math.round(weather.main?.temp - 273.15) + "°C"
+                : Math.round(((weather.main?.temp - 273.15) * 9) / 5 + 32) +
+                  "°F"}
+            </p>
+          </div>
+          <div className="description-weather">
+            <p>"{weather.weather?.[0].description}"</p>
+            <p>
+              <img className="icon-wind" src={image2} alt="" />
+              Wind Speed: {weather.wind?.speed}
+            </p>
+            <p>Clouds: {weather.clouds?.all}%</p>
+            <p>
+              <img className="icon-wind" src={image} alt="" />
+              Pressure: {weather.main?.pressure} mb
+            </p>
+          </div>
         </div>
+        <button onClick={changeValue}>
+          {isCentigrade ? "Change to °F" : "Change to °C"}
+        </button>
       </div>
-      <button onClick={changeValue}>
-        {isCentigrade ? "Change to °F" : "Change to °C"}
-      </button>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
