@@ -57,7 +57,7 @@ function App() {
       <p><img className="icon-wind" src="../src/assets/wind.svg" alt="" /> 
         Wind Speed: {weather.wind?.speed}</p>
       <p>Clouds: {weather.clouds?.all}%</p>
-      <p><img className="icon-wind" src="../src/assets/elea.jpg" alt="" />
+      <p><img className="icon-wind" src="../src/assets/pressue.svg" alt="" />
        Pressure: {weather.main?.pressure} mb</p>
      </div>
         
