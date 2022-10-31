@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import image from "../src/assets/pressue.svg";
+import image2 from "../src/assets/wind.svg";
 
 function App() {
   const [weather, setWeather] = useState({});
@@ -64,7 +65,7 @@ function App() {
         <div className="description-weather">
           <p>"{weather.weather?.[0].description}"</p>
           <p>
-            <img className="icon-wind" src={"../src/assets/wind.svg"} alt="" />
+            <img className="icon-wind" src={image2} alt="" />
             Wind Speed: {weather.wind?.speed}
           </p>
           <p>Clouds: {weather.clouds?.all}%</p>
