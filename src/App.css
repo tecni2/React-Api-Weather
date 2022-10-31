@@ -1,23 +1,20 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem;
+  /* padding: 1rem; */
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+* {
+  box-sizing: border-box;
 }
 
-@keyframes logo-spin {
+.img-img-weather:hover {
+  filter: drop-shadow(0 0 3em #000000aa);
+}
+
+
+@keyframes img-img-weather {
   from {
     transform: rotate(0deg);
   }
@@ -32,22 +29,33 @@
   }
 }
 
+.body-scattered-clouds {
+  background-image: url(../src/assets/scattered_clouds_nubes_dispersas.jpeg);
+  background-size: cover;
+}
+.body-change {
+  background-image: url(../src/assets/fog_niebla.jpeg);
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  /* height: 100vh; */
+}
+
+
 .App {
-  padding: 10px 20px;
-  border: solid 1px white;
+  padding: 10px 20px 10px 0px;
+  /* border: solid 1px white; */
   border-radius: 15px;
-  background-color: rgba(82, 146, 184, 0.815);
+  background-color: rgba(43, 131, 182, 0.993);
 }
 
-.card {
-  display: flex;
-  /* flex-direction: row; */
-  /* border: solid 1px darkcyan; */
-  /* padding: 1em; */
-}
+.card {display: flex;}
 
-.read-the-docs {
-  color: #888;
+.h3-location {margin-bottom: -8px;}
+.p-temperature {margin-top: -6px;}
+
+.p-value {
+  font-size: 20px;
+  margin-top: -10px;
 }
 
 .icon {
@@ -57,14 +65,22 @@
 
 .icon-wind {
   width: 20px;
+  padding-right: 5px;
 }
 
-.img-img-weather {
-  /* border: solid 1px firebrick; */
-  width: 180px;
+.img-img-weather {width: 180px;}
+
+@media (max-width: 390px) {
+  .img-img-weather {
+    width: 150px;
+  }
 }
 
-
+@media (max-width: 365px) {
+  .img-img-weather {
+    width: 135px;
+  }
+}
 
 /*
 * LOADER  
