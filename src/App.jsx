@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import image from "../src/assets/pressue.svg";
 
 function App() {
   const [weather, setWeather] = useState({});
@@ -70,7 +71,7 @@ function App() {
           <p>
             <img
               className="icon-wind"
-              src={"../src/assets/pressue.svg"}
+              src={image}
               alt=""
             />
             Pressure: {weather.main?.pressure} mb
