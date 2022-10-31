@@ -21,9 +21,13 @@ function App() {
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 5000,
+      // timeout: 5000,
       maximumAge: 0,
     };
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
 
     const success = (pos) => {
       // const crd = pos.coords;
@@ -37,10 +41,10 @@ function App() {
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
         )
         .then((res) => setWeather(res.data))
-        .catch((err) => console.log("fallo"));
+        .catch((err) => console.log("fallo la API"));
     };
 
-    navigator.geolocation.getCurrentPosition(success, Option);
+    navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
   // setTimeout(() => {
   // }, 1000)
@@ -72,7 +76,7 @@ function App() {
               src={`http://openweathermap.org/img/wn/${weather.weather?.[0].icon}@2x.png`}
               alt=""
             />
-            <p>Temperatura</p>
+            <p>Temperatura:</p>
             <p>
               {isCentigrade
                 ? Math.round(weather.main?.temp - 273.15) + "°C"
